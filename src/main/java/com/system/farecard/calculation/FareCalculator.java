@@ -48,7 +48,7 @@ public class FareCalculator {
 
     public double calculateFareAmount(JourneyDetails journeyDetails) {
         if("Bus".equalsIgnoreCase(journeyDetails.getChannel())) {
-            return 2;
+            return 1.8;
         }
 
         if(null == journeyDetails.getExitZone() || "".equals(journeyDetails.getExitZone())) {
