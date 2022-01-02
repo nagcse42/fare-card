@@ -14,6 +14,6 @@ public interface CardDetailsRepository extends JpaRepository<CardDetails, Long> 
 
     @Transactional
     @Modifying
-    @Query("update CardDetails c set c.balance = latestBalance where c.cardNumber = cardNumber")
-    void updateCardBalance(@Param("cardNumber") String cardNumber, @Param("balance") double latestBalance);
+    @Query("update CardDetails c set c.balance=:balance where c.cardNumber=:cardNumber")
+    void updateCardBalance(@Param("cardNumber") String cardNumber, @Param("balance") double balance);
 }
