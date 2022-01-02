@@ -40,7 +40,8 @@ public class FareCalculator {
 
     public double calculateFarePrice(StationDetails origin, StationDetails destination) {
 
-        Optional<FareCalculationRule> fareCalRule = calculationRules.stream().filter(calculationRule -> calculationRule.isFareMatched(origin, destination))
+        Optional<FareCalculationRule> fareCalRule = calculationRules.stream()
+                .filter(calculationRule -> calculationRule.isFareMatched(origin, destination))
                 .findFirst();
 
         return fareCalRule.map(FareCalculationRule::getFarePrice).orElse(3.2);
@@ -59,7 +60,7 @@ public class FareCalculator {
         entryStation.setZones(journeyDetails.getEntryZone());
 
         StationDetails exitStation = new StationDetails();
-        exitStation.setZones(journeyDetails.getEntryZone());
+        exitStation.setZones(journeyDetails.getExitZone());
 
        return calculateFarePrice(entryStation, exitStation);
     }
