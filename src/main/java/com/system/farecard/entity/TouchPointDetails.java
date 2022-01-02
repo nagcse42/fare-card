@@ -17,17 +17,29 @@ public class TouchPointDetails {
     @Column(name = "CARD_NUMBER")
     private String cardNumber;
 
-    @Column(name = "TOUCH_POINT")
-    private String touchPoint;
-
-    @Column(name = "STATION")
-    private String station;
-
-    @Column(name = "ZONE")
-    private int zone;
-
     @Column(name = "CHANNEL")
     private String channel;
+
+    @Column(name = "ENTRY_STATION")
+    private String entryStation;
+
+    @Column(name = "ENTRY_ZONE")
+    private String entryZone;
+
+    @Column(name = "EXIT_STATION")
+    private String exitStation;
+
+    @Column(name = "EXIT_ZONE")
+    private String exitZone;
+
+    @Column(name = "BALANCE")
+    private double balance;
+
+    @Column(name = "JOURNEY_AMOUNT")
+    private double journeyAmount;
+
+    @Column(name = "AFTER_JOURNEY_BALANCE")
+    private double afterJourneyBalance;
 
     @CreatedDate
     @Column(name = "CREATED_TIME")
@@ -36,19 +48,6 @@ public class TouchPointDetails {
     @LastModifiedDate
     @Column(name = "UPDATED_TIME")
     private LocalDateTime updatedTime;
-
-    public TouchPointDetails(){}
-
-    public TouchPointDetails(Long id, String cardNumber, String touchPoint, String station, int zone,
-                             LocalDateTime createdTime, LocalDateTime updatedTime) {
-        this.id = id;
-        this.cardNumber = cardNumber;
-        this.touchPoint = touchPoint;
-        this.station = station;
-        this.zone = zone;
-        this.createdTime = createdTime;
-        this.updatedTime = updatedTime;
-    }
 
     public Long getId() {
         return id;
@@ -66,28 +65,68 @@ public class TouchPointDetails {
         this.cardNumber = cardNumber;
     }
 
-    public String getTouchPoint() {
-        return touchPoint;
+    public String getChannel() {
+        return channel;
     }
 
-    public void setTouchPoint(String touchPoint) {
-        this.touchPoint = touchPoint;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
-    public String getStation() {
-        return station;
+    public String getEntryStation() {
+        return entryStation;
     }
 
-    public void setStation(String station) {
-        this.station = station;
+    public void setEntryStation(String entryStation) {
+        this.entryStation = entryStation;
     }
 
-    public int getZone() {
-        return zone;
+    public String getEntryZone() {
+        return entryZone;
     }
 
-    public void setZone(int zone) {
-        this.zone = zone;
+    public void setEntryZone(String entryZone) {
+        this.entryZone = entryZone;
+    }
+
+    public String getExitStation() {
+        return exitStation;
+    }
+
+    public void setExitStation(String exitStation) {
+        this.exitStation = exitStation;
+    }
+
+    public String getExitZone() {
+        return exitZone;
+    }
+
+    public void setExitZone(String exitZone) {
+        this.exitZone = exitZone;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getJourneyAmount() {
+        return journeyAmount;
+    }
+
+    public void setJourneyAmount(double journeyAmount) {
+        this.journeyAmount = journeyAmount;
+    }
+
+    public double getAfterJourneyBalance() {
+        return afterJourneyBalance;
+    }
+
+    public void setAfterJourneyBalance(double afterJourneyBalance) {
+        this.afterJourneyBalance = afterJourneyBalance;
     }
 
     public LocalDateTime getCreatedTime() {
