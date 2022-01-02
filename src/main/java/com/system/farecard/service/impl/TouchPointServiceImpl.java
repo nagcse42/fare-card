@@ -8,6 +8,8 @@ import com.system.farecard.service.TouchPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TouchPointServiceImpl implements TouchPointService {
 
@@ -28,7 +30,7 @@ public class TouchPointServiceImpl implements TouchPointService {
     }
 
     @Override
-    public void transformAndSaveFlow(JourneyFlow journeyFlow) {
+    public List<TouchPointDetails> transformAndSaveFlow(JourneyFlow journeyFlow) {
         TouchPointDetails touchPointDetails = new TouchPointDetails();
         touchPointDetails.setAfterJourneyBalance(journeyFlow.getAfterJourneyBalance());
         touchPointDetails.setBalance(journeyFlow.getBalance());
@@ -42,5 +44,7 @@ public class TouchPointServiceImpl implements TouchPointService {
 
         saveTouchPoint(touchPointDetails);
         cardDetailsRepository.updateCardBalance(journeyFlow.getCardNumber(), journeyFlow.getAfterJourneyBalance());
+
+        return touchPointRepository.findByCardNumber(journeyFlow.getCardNumber());
     }
 }

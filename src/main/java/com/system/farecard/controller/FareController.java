@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class FareController {
 
@@ -57,8 +59,8 @@ public class FareController {
     @PostMapping(value = "save/journey",consumes = "application/json", produces = "application/json")
     public ResponseEntity saveJourneyFlow(@RequestBody JourneyFlow journeyFlow) {
         try {
-            touchPointService.transformAndSaveFlow(journeyFlow);
-            return ResponseEntity.ok("");
+            List<TouchPointDetails> touchPointDetails = touchPointService.transformAndSaveFlow(journeyFlow);
+            return ResponseEntity.ok(touchPointDetails);
         } catch (Exception e) {
             return ResponseEntity.ok(e.getMessage());
         }
